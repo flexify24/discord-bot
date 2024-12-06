@@ -1,15 +1,19 @@
 #!/bin/bash
 
-# Define the app directory and the .env file path
-APP_DIR="/home/ec2-user/discord-bot"
-ENV_FILE="$APP_DIR/.env"
+# Define the .env file path and the app's entry file
+ENV_FILE=".env"
+APP_ENTRY="bot.js"
 
-# Function to restart the app
-restart_app() {
-  echo "Restarting the app..."
-  cd "$APP_DIR"
-  pm2 restart discord-bot || pm2 start bot.js --name discord-bot
-  echo "App is running!"
+# Function to stop the existing app
+stop_app() {
+  echo "Stopping any existing instance of the app..."
+  pkill -f "node $APP_ENTRY" && echo "App stopped." || echo "No running instance found."
+}
+
+# Function to start the app
+start_app() {
+  echo "Starting the app..."
+  node "$APP_ENTRY"
 }
 
 # Prompt the user if they want to change the token
@@ -39,5 +43,6 @@ else
   echo "Keeping the existing token."
 fi
 
-# Restart the app
-restart_app
+# Stop any running app instance and start the app
+stop_app
+start_app
