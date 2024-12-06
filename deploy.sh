@@ -13,7 +13,7 @@ stop_app() {
 # Function to start the app
 start_app() {
   echo "Starting the app..."
-  node "$APP_ENTRY"
+  nohup node "$APP_ENTRY" > app.log 2>&1 &
 }
 
 # Prompt the user if they want to change the token
