@@ -12,6 +12,7 @@ const client = new Client({
   ],
 });
 const mySecret = process.env['DISCORD_TOKEN'];
+console.log(mySecret);
 const imageList = [];
 const triggeredChannels = new Set();
 let triggerResponses = {}
