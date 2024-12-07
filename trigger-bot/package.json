@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.0.3",
+    "node-cron": "^3.0.2"
+  },
+  "author": "fiverr.com/drangula"
+}
