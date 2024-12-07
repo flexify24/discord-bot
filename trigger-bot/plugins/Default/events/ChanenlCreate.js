@@ -26,8 +26,29 @@ module.exports = class extends Event {
 
     if (matchedJane) {
       try {
+        const now = new Date();
+        const timestamp = now.toLocaleString('en-US', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false,
+        });
+        console.log(`[${timestamp}][LOG] Triggered in #${channel.name}.`);
         await channel.send(matchedJane.response);
-        console.log(`[LOG] Sent trigger response in #${channel.name}.`);
+        const now2 = new Date();
+        const timestamp2 = now2.toLocaleString('en-US', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false,
+        });
+        console.log(`[${timestamp2}][LOG] Sent trigger response in #${channel.name}.`);
       } catch (error) {
         console.error(
           `[ERROR] Could not send message in #${channel.name}:`,
