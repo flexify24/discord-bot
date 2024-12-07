@@ -3,17 +3,6 @@ const Cron = require("node-cron");
 
 let credits;
 
-try {
-  credits = fs.readFileSync("./credits.txt", "utf-8");
-  if (credits.length !== 417) {
-    console.log("[ERROR] CREDITS REMOVED, SHUTTING DOWN PROCESS!");
-    process.exit(403);
-  }
-} catch (err) {
-  console.log("[ERROR] CREDITS REMOVED, SHUTTING DOWN PROCESS!");
-  process.exit(403);
-}
-
 class PluginManager {
   constructor(client) {
     this.client = client;
